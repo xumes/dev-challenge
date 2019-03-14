@@ -11,6 +11,8 @@ We don't want to change that database. We've built our whole company around it!
 There are many todo's in the project.  Each todo has a point score based on how
 difficult it is.  Search for todos and do as many as you can.
 
+Choose at least one 1 pointer, one 3 pointer and one 5 pointer.  Implement your 
+answers, and send back to use to check out.
 
 # server 
 Our GraphQL API into our amazing platform.
