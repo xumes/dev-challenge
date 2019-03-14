@@ -1,0 +1,40 @@
+{
+  "name": "dev-challenge-server",
+  "version": "1.0.0",
+  "description": "A server side challenge",
+  "main": "index.js",
+  "repository": "https://github.com/joinlane/dev-challenge",
+  "author": "Clinton Robinson",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@babel/cli": "7.2.3",
+    "@babel/core": "7.2.2",
+    "@babel/node": "7.2.2",
+    "@babel/plugin-proposal-class-properties": "7.3.4",
+    "@babel/plugin-proposal-export-default-from": "7.2.0",
+    "@babel/plugin-proposal-export-namespace-from": "7.2.0",
+    "@babel/plugin-syntax-import-meta": "7.2.0",
+    "@babel/preset-env": "7.2.3",
+    "@babel/preset-react": "7.0.0",
+    "@babel/register": "7.0.0",
+    "nodemon": "1.18.9",
+    "prettier": "1.15.3"
+  },
+  "dependencies": {
+    "apollo-server-koa": "^2.4.8",
+    "color": "^3.1.0",
+    "faker": "^4.1.0",
+    "glob": "^7.1.3",
+    "graphql": "^14.1.1",
+    "koa": "^2.7.0",
+    "request-promise-native": "^1.0.7",
+    "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "setup": "babel-node setup/index.js",
+    "start": "nodemon $NODE_DEBUG_OPTION -e js,graphql --watch src --exec babel-node index.js",
+    "build:server": "babel src -d build --copy-files",
+    "serve": "node build/index.js"
+  }
+}

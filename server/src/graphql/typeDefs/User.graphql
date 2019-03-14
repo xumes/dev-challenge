@@ -1,0 +1,15 @@
+"""
+A User of our platform.
+
+// todo: 1. would be cool to include all the data and expand out the User type so it includes all the fields.
+// todo: 2. would be awesome to include the Address type so we can return users Address info.
+// todo: 3. adding in a Company field so we can also get a users company info would be cool, it will probably need a resolver.
+"""
+type User {
+  id: ID!
+  image: String!
+  name: String!
+  email: String
+  color: Color
+  friends: [User!]
+}

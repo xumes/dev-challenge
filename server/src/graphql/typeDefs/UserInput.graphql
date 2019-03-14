@@ -1,0 +1,8 @@
+"""
+A User Input used to update user data on our platform.
+"""
+input UserInput {
+  id: ID!
+  name: String!
+  email: String
+}

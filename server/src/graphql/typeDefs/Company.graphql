@@ -1,0 +1,31 @@
+"""
+A Company on our platform.
+
+// todo: 3. looks like we need a resolver or something to make the employees field work, right now it's just null. this query should work.
+
+query Companies {
+  companies {
+    id
+    name
+    color
+    image
+    employees {
+      name
+      image
+      id
+      friends {
+        name
+        id
+      }
+    }
+  }
+}
+
+"""
+type Company {
+  id: ID!
+  color: Color
+  image: String!
+  name: String!
+  employees: [User!]
+}
