@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
   wrapper: { flex: 1 },
   header: {
     flex: 1,
-    backgroundColor: 'blue',
     resizeMode: 'contain',
     justifyContent: 'center',
     alignItems: 'center'
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
   imageWrapper: {
     marginRight: 20,
     borderRadius: 40,
-    backgroundColor: 'blue',
+    backgroundColor: '#4169E1',
     borderWidth: 3,
     borderColor: 'rgba(0,0,0,0.2)',
     width: 100,
@@ -38,8 +37,10 @@ const styles = StyleSheet.create({
   userWrapper: { alignItems: 'center' },
   userMail: { fontSize: 14, color: 'white' },
   userName: { fontSize: 24, color: 'white' },
-  company: { backgroundColor: 'white' },
-  friends: { flex: 1, backgroundColor: 'green' }
+  companyHeader: {color: '#FFDEAD'},
+  company: { backgroundColor: '#4169E1' },
+  friendsHeader: {color: '#008080', fontWeight: 'bold'},
+  friends: { flex: 1, backgroundColor: 'lightgoldenrodyellow' }
 });
 
 export default class UserScene extends PureComponent {
@@ -77,7 +78,7 @@ export default class UserScene extends PureComponent {
     // todo: 5 would be cool to make the user name and email updateable and saved ot the database, so we can let our users change their info.
     return (
       <View style={styles.wrapper}>
-        <View style={styles.header}>
+        <View style={[styles.header, {backgroundColor: user.color}]}>
           <View style={styles.imageWrapper}>
             <Image style={styles.image} source={{ uri: user.image }} />
           </View>
@@ -87,10 +88,10 @@ export default class UserScene extends PureComponent {
           </View>
         </View>
         <View style={styles.company}>
-          <Text>My Company </Text>
+          <Text style={styles.companyHeader}>My Company </Text>
         </View>
         <View style={styles.friends}>
-          <Text style={{color: 'white', fontWeight: 'bold'}}>{firstName}`s  friends</Text>
+          <Text style={styles.friendsHeader}>{firstName}`s  friends</Text>
           <Query query={qryFriends}>
             {({ loading, error, data }) => {
               if (loading) {
