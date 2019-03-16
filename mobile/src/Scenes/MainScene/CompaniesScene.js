@@ -22,6 +22,7 @@ const query = gql`
     companies {
       id
       color
+      image
       name
     }
   }
@@ -49,8 +50,9 @@ export default class CompaniesScene extends PureComponent {
                 renderItem={({ item }) => (
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.navigate('CompaniesScene', {
-                        id: item.id
+                      navigation.navigate('CompanyScene', {
+                        id: item.id,
+                        company: item
                       })
                     }
                   >

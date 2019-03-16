@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   companyHeader: { color: '#FFDEAD' },
   company: { backgroundColor: '#4169E1' },
   friendsHeader: { color: '#008080', fontWeight: 'bold' },
-  friends: { flex: 1, backgroundColor: 'lightgoldenrodyellow' }
+  friends: { flex: 1, backgroundColor: 'lightgoldenrodyellow', paddingLeft: 20, fontWeight: 'bold' }
 });
 
 export default class UserScene extends PureComponent {
