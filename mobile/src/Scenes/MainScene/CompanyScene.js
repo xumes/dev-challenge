@@ -68,10 +68,6 @@ export default class CompanyScene extends PureComponent {
     const { navigation } = this.props;
     const id = navigation.getParam('id');
     const company = navigation.getParam('company');
-    const firstName = company.name
-      .split(' ')
-      .slice(0, -1)
-      .join(' ');
 
     const qryEmployees = this.createQuery(id);
     return (
@@ -86,7 +82,7 @@ export default class CompanyScene extends PureComponent {
           </View>
         </View>
         <View style={styles.employees}>
-          <Text style={styles.employeesHeader}>{firstName}`s employees</Text>
+          <Text style={styles.employeesHeader}>List of employees</Text>
           <Query query={qryEmployees}>
             {({ loading, error, data }) => {
               if (loading) {
