@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Image,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity
 } from 'react-native';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
@@ -37,9 +38,9 @@ const styles = StyleSheet.create({
   userWrapper: { alignItems: 'center' },
   userMail: { fontSize: 14, color: 'white' },
   userName: { fontSize: 24, color: 'white' },
-  companyHeader: {color: '#FFDEAD'},
+  companyHeader: { color: '#FFDEAD' },
   company: { backgroundColor: '#4169E1' },
-  friendsHeader: {color: '#008080', fontWeight: 'bold'},
+  friendsHeader: { color: '#008080', fontWeight: 'bold' },
   friends: { flex: 1, backgroundColor: 'lightgoldenrodyellow' }
 });
 
@@ -54,6 +55,7 @@ export default class UserScene extends PureComponent {
             image
             name
             email
+            color
           }
         }
       }
@@ -66,7 +68,10 @@ export default class UserScene extends PureComponent {
     const { navigation } = this.props;
     const id = navigation.getParam('id');
     const user = navigation.getParam('user');
-    const firstName = user.name.split(' ').slice(0, -1).join(' ');
+    const firstName = user.name
+      .split(' ')
+      .slice(0, -1)
+      .join(' ');
 
     const qryFriends = this.createQuery(id);
     // todo: 2. would be cool if we actually displayed full user data that is contained in the user data object.
@@ -78,7 +83,7 @@ export default class UserScene extends PureComponent {
     // todo: 5 would be cool to make the user name and email updateable and saved ot the database, so we can let our users change their info.
     return (
       <View style={styles.wrapper}>
-        <View style={[styles.header, {backgroundColor: user.color}]}>
+        <View style={[styles.header, { backgroundColor: user.color }]}>
           <View style={styles.imageWrapper}>
             <Image style={styles.image} source={{ uri: user.image }} />
           </View>
@@ -91,7 +96,7 @@ export default class UserScene extends PureComponent {
           <Text style={styles.companyHeader}>My Company </Text>
         </View>
         <View style={styles.friends}>
-          <Text style={styles.friendsHeader}>{firstName}`s  friends</Text>
+          <Text style={styles.friendsHeader}>{firstName}`s friends</Text>
           <Query query={qryFriends}>
             {({ loading, error, data }) => {
               if (loading) {
@@ -107,7 +112,18 @@ export default class UserScene extends PureComponent {
               return (
                 <FlatList
                   data={data.user.friends}
-                  renderItem={({ item }) => <UserList user={item} />}
+                  renderItem={({ item }) => (
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.navigate('UserScene', {
+                          id: item.id,
+                          user: item
+                        })
+                      }
+                    >
+                      <UserList user={item} />
+                    </TouchableOpacity>
+                  )}
                 />
               );
             }}
