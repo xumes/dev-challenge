@@ -112,8 +112,17 @@ export default class UserScene extends PureComponent {
         <View style={styles.company}>
           {user.company[0] ? (
             <View>
-              <Text style={styles.companyHeader}>Where I work</Text>
-              <UserList user={user.company[0]} />
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate('CompanyScene', {
+                    id: user.company[0].id,
+                    company: user.company[0]
+                  })
+                }
+              >
+                <Text style={styles.companyHeader}>Where I work</Text>
+                <UserList user={user.company[0]} />
+              </TouchableOpacity>
             </View>
           ) : (
             <Text style={styles.companyHeader}>Unemployed</Text>
