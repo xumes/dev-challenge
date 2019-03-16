@@ -41,7 +41,12 @@ const styles = StyleSheet.create({
   companyHeader: { color: '#FFDEAD' },
   company: { backgroundColor: '#4169E1' },
   friendsHeader: { color: '#008080', fontWeight: 'bold' },
-  friends: { flex: 1, backgroundColor: 'lightgoldenrodyellow', paddingLeft: 20, fontWeight: 'bold' }
+  friends: {
+    flex: 1,
+    backgroundColor: 'lightgoldenrodyellow',
+    paddingLeft: 20,
+    fontWeight: 'bold'
+  }
 });
 
 export default class UserScene extends PureComponent {
@@ -50,12 +55,24 @@ export default class UserScene extends PureComponent {
       query User {
         user(id: "${id}") {
           id
+          company {
+            id
+            name
+            color
+            image
+          }
           friends {
             id
             image
             name
             email
             color
+            company {
+              id
+              name
+              color
+              image
+            }
           }
         }
       }
@@ -93,7 +110,14 @@ export default class UserScene extends PureComponent {
           </View>
         </View>
         <View style={styles.company}>
-          <Text style={styles.companyHeader}>My Company </Text>
+          {user.company[0] ? (
+            <View>
+              <Text style={styles.companyHeader}>Where I work</Text>
+              <UserList user={user.company[0]} />
+            </View>
+          ) : (
+            <Text style={styles.companyHeader}>Unemployed</Text>
+          )}
         </View>
         <View style={styles.friends}>
           <Text style={styles.friendsHeader}>{firstName}`s friends</Text>

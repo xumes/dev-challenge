@@ -25,6 +25,12 @@ const query = gql`
       name
       email
       image
+      company {
+        id
+        name
+        color
+        image
+      }
     }
   }
 `;
