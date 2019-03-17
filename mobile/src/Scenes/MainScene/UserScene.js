@@ -38,13 +38,12 @@ const styles = StyleSheet.create({
   userWrapper: { alignItems: 'center' },
   userMail: { fontSize: 14, color: 'white' },
   userName: { fontSize: 24, color: 'white' },
-  companyHeader: { color: '#FFDEAD' },
+  companyHeader: { color: '#FFDEAD', paddingLeft: 20 },
   company: { backgroundColor: '#4169E1' },
-  friendsHeader: { color: '#008080', fontWeight: 'bold' },
+  friendsHeader: { color: '#008080', fontWeight: 'bold', paddingLeft: 20 },
   friends: {
     flex: 1,
     backgroundColor: 'lightgoldenrodyellow',
-    paddingLeft: 20,
     fontWeight: 'bold'
   }
 });
@@ -145,6 +144,7 @@ export default class UserScene extends PureComponent {
               return (
                 <FlatList
                   data={data.user.friends}
+                  keyExtractor={item => item.id}
                   renderItem={({ item }) => (
                     <TouchableOpacity
                       onPress={() =>

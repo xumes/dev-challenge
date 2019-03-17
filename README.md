@@ -34,9 +34,9 @@ Install the required packages.
 
 Start up the app.
 
-```react-native start-ios```
+```react-native run-ios```
 
 or 
 
-```react-native start-android```
+```react-native run-android```
 

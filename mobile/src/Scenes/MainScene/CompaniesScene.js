@@ -47,6 +47,7 @@ export default class CompaniesScene extends PureComponent {
             return (
               <FlatList
                 data={data.companies}
+                keyExtractor={item => item.id}
                 renderItem={({ item }) => (
                   <TouchableOpacity
                     onPress={() =>
