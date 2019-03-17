@@ -41,7 +41,12 @@ const styles = StyleSheet.create({
   companyHeader: { color: '#FFDEAD' },
   company: { backgroundColor: '#4169E1' },
   employeesHeader: { color: '#008080', fontWeight: 'bold' },
-  employees: { flex: 1, backgroundColor: 'lightgoldenrodyellow', paddingLeft: 20, fontWeight: 'bold' }
+  employees: {
+    flex: 1,
+    backgroundColor: 'lightgoldenrodyellow',
+    paddingLeft: 20,
+    fontWeight: 'bold'
+  }
 });
 
 export default class CompanyScene extends PureComponent {
@@ -92,8 +97,6 @@ export default class CompanyScene extends PureComponent {
               if (error) {
                 return <ErrorScene message={error.message} />;
               }
-
-              console.log('list of employees', data.company.employees);
 
               return (
                 <FlatList

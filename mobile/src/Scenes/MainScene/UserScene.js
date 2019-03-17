@@ -76,7 +76,6 @@ export default class UserScene extends PureComponent {
         }
       }
   `;
-    console.log('the query is', query);
     return query;
   };
 
@@ -138,8 +137,6 @@ export default class UserScene extends PureComponent {
               if (error) {
                 return <ErrorScene message={error.message} />;
               }
-
-              console.log('list of friends', data.user.friends);
 
               return (
                 <FlatList
